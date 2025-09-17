@@ -1,5 +1,8 @@
 import Graphemer from 'graphemer';
 
+/**
+ * @deprecated use ExplorerIconService instead
+ */
 export function extractEmojiIcon(text: string) {
   const isStartsWithEmoji = /^(\p{Emoji_Presentation})/u.test(text);
   if (isStartsWithEmoji) {
