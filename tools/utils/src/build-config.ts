@@ -19,6 +19,7 @@ export function getBuildConfig(
 
   const buildPreset: Record<BuildFlags['channel'], BUILD_CONFIG_TYPE> = {
     get stable() {
+      const cemmCloudBaseUrl = 'https://affine.cemm.local';
       return {
         debug: buildFlags.mode === 'development',
         distribution,
@@ -44,11 +45,11 @@ export function getBuildConfig(
         // editorVersion: pkg.dependencies['@blocksuite/affine'],
         editorVersion: pkg.version,
         githubUrl: 'https://github.com/toeverything/AFFiNE',
-        changelogUrl: 'https://affine.pro/what-is-new',
-        downloadUrl: 'https://affine.pro/download',
-        pricingUrl: 'https://affine.pro/pricing',
-        discordUrl: 'https://affine.pro/redirect/discord',
-        requestLicenseUrl: 'https://affine.pro/redirect/license',
+        changelogUrl: `${cemmCloudBaseUrl}/what-is-new`,
+        downloadUrl: `${cemmCloudBaseUrl}/download`,
+        pricingUrl: `${cemmCloudBaseUrl}/pricing`,
+        discordUrl: `${cemmCloudBaseUrl}/redirect/discord`,
+        requestLicenseUrl: `${cemmCloudBaseUrl}/redirect/license`,
         imageProxyUrl: '/api/worker/image-proxy',
         linkPreviewUrl: '/api/worker/link-preview',
         CAPTCHA_SITE_KEY: process.env.CAPTCHA_SITE_KEY ?? '',
