@@ -6,6 +6,9 @@ import {
 
 import type { ServerConfig, ServerMetadata } from './types';
 
+const CEMM_CLOUD_BASE_URL = 'https://affine.cemm.local';
+const CEMM_CLOUD_NAME = 'CeMM AFFiNE Cloud';
+
 export const BUILD_IN_SERVERS: (ServerMetadata & { config: ServerConfig })[] =
   environment.isSelfHosted
     ? [
@@ -16,7 +19,7 @@ export const BUILD_IN_SERVERS: (ServerMetadata & { config: ServerConfig })[] =
           // this is ok for web app, but not for desktop app
           // since we never build desktop app in selfhosted mode, so it's fine
           config: {
-            serverName: 'Affine Selfhost',
+            serverName: CEMM_CLOUD_NAME,
             features: [],
             oauthProviders: [],
             type: ServerDeploymentType.Selfhosted,
@@ -37,7 +40,7 @@ export const BUILD_IN_SERVERS: (ServerMetadata & { config: ServerConfig })[] =
               ? 'http://localhost:8080'
               : location.origin,
             config: {
-              serverName: 'Affine Cloud',
+              serverName: CEMM_CLOUD_NAME,
               features: [
                 ServerFeature.Indexer,
                 ServerFeature.Copilot,
@@ -65,12 +68,10 @@ export const BUILD_IN_SERVERS: (ServerMetadata & { config: ServerConfig })[] =
             {
               id: 'affine-cloud',
               baseUrl: BUILD_CONFIG.isNative
-                ? BUILD_CONFIG.isIOS
-                  ? 'https://apple.getaffineapp.com'
-                  : 'https://app.affine.pro'
+                ? CEMM_CLOUD_BASE_URL
                 : location.origin,
               config: {
-                serverName: 'Affine Cloud',
+                serverName: CEMM_CLOUD_NAME,
                 features: [
                   ServerFeature.Indexer,
                   ServerFeature.Copilot,
@@ -98,12 +99,10 @@ export const BUILD_IN_SERVERS: (ServerMetadata & { config: ServerConfig })[] =
               {
                 id: 'affine-cloud',
                 baseUrl: BUILD_CONFIG.isNative
-                  ? BUILD_CONFIG.isIOS
-                    ? 'https://apple.getaffineapp.com'
-                    : 'https://insider.affine.pro'
+                  ? CEMM_CLOUD_BASE_URL
                   : location.origin,
                 config: {
-                  serverName: 'Affine Cloud',
+                  serverName: CEMM_CLOUD_NAME,
                   features: [
                     ServerFeature.Indexer,
                     ServerFeature.Copilot,
@@ -130,9 +129,9 @@ export const BUILD_IN_SERVERS: (ServerMetadata & { config: ServerConfig })[] =
             ? [
                 {
                   id: 'affine-cloud',
-                  baseUrl: 'https://insider.affine.pro',
+                  baseUrl: CEMM_CLOUD_BASE_URL,
                   config: {
-                    serverName: 'Affine Cloud',
+                    serverName: CEMM_CLOUD_NAME,
                     features: [
                       ServerFeature.Indexer,
                       ServerFeature.Copilot,
@@ -160,10 +159,10 @@ export const BUILD_IN_SERVERS: (ServerMetadata & { config: ServerConfig })[] =
                   {
                     id: 'affine-cloud',
                     baseUrl: BUILD_CONFIG.isNative
-                      ? 'https://affine.fail'
+                      ? CEMM_CLOUD_BASE_URL
                       : location.origin,
                     config: {
-                      serverName: 'Affine Cloud',
+                      serverName: CEMM_CLOUD_NAME,
                       features: [
                         ServerFeature.Indexer,
                         ServerFeature.Copilot,
